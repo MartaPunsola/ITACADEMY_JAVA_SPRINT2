@@ -14,7 +14,7 @@ db.createCollection('store', {
           required: ['order_id', 'date_and_time', 'product', 'total_price', 'client', 'delivered', 'paid'],
           properties: {
             order_id: {
-              bsonType: 'int'
+              bsonType: 'objectId'
             },
             date_and_time: {
               bsonType: 'timestamp'
@@ -25,7 +25,7 @@ db.createCollection('store', {
               required: ['product_id', 'type', 'name', 'name', 'quantity', 'description', 'image', 'price'],
               properties: {
                 product_id: {
-                  bsonType: 'int'
+                  bsonType: 'objectId'
                 },
                 type: {
                   bsonType: 'object',
@@ -77,7 +77,7 @@ db.createCollection('store', {
               required: ['client_id', 'name', 'surname', 'phone_number', 'order_type'],
               properties: {
                 client_id: {
-                  bsonType: 'int'
+                  bsonType: 'objectId'
                 },
                 name: {
                   bsonType: 'string'
@@ -116,7 +116,7 @@ db.createCollection('store', {
                           bsonType: 'timestamp'
                         },
                         deliveryman_id: {
-                          bsonType: 'int'
+                          bsonType: 'objectId'
                         }
                       }
                     }
@@ -150,7 +150,7 @@ db.createCollection('store', {
           required: ['worker_id', 'name', 'surname', 'nif', 'phone_number', 'role'],
           properties: {
             worker_id: {
-              bsonType: 'int'
+              bsonType: 'objectId'
             },
             name: {
               bsonType: 'string'
@@ -174,4 +174,4 @@ db.createCollection('store', {
     }
   }
 });
-Generated: 6 / 9 / 2024 | 10: 31: 17 by Moon Modeler - www.datensen.com
+Generated: 9 / 9 / 2024 | 13: 53: 06 by Moon Modeler - www.datensen.com
