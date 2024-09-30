@@ -37,7 +37,7 @@ db.restaurants.find({borough: {$in: ['Staten Island', 'Queens', 'Bronx', 'Brookl
 // 19. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que no pertanyen a Staten Island o Queens o Bronx o Brooklyn.
 db.restaurants.find({borough: {$nin: ['Staten Island', 'Queens', 'Bronx', 'Brooklyn']}}, {restaurant_id: 1, name: 1, borough: 1, cuisine: 1})
 // 20. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que aconsegueixin un marcador que no és més de 10.
-db.restaurants.find({'grades.score': {$not: {$gt: 10}}}, {restaurant_id: 1, name: 1, borough: 1, cuisine: 1})
+db.restaurants.find({'grades.score': {$lte: 10}}, {restaurant_id: 1, name: 1, borough: 1, cuisine: 1})
 // 21. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que preparen peix excepte 'American' i 'Chinese' o el name del restaurant comença amb lletres 'Wil'.
 db.restaurants.find({$or: [{cuisine: 'Seafood', cuisine: {$nin: ['American', 'Chinese']}}, {name: {$not: /^Wil/}}]}, {restaurant_id: 1, name: 1, borough: 1, cuisine: 1})
 // 22. Escriu una consulta per trobar el restaurant_id, name, i grades per a aquells restaurants que aconsegueixin un grau "A" i un score 11 en dades d'estudi ISODate "2014-08-11T00:00:00Z".
@@ -53,7 +53,7 @@ db.restaurants.find({}).sort({name: -1})
 // 27. Escriu una consulta per organitzar el nom de la cuisine en ordre ascendent i pel mateix barri de cuisine. Ordre descendent.
 db.restaurants.find({}).sort({cuisine: 1, borough: -1})
 // 28. Escriu una consulta per saber totes les direccions que no contenen el carrer.
-db.restaurants.find({'address.street': null})
+db.restaurants.find({'address.street': {$exists: false}})
 // 29. Escriu una consulta que seleccionarà tots els documents en la col·lecció de restaurants on el valor del camp coord és Double.
 db.restaurants.find({'address.coord': {$type: 'double'}})
 // 30. Escriu una consulta que seleccionarà el restaurant_id, name i grade per a aquells restaurants que retornin 0 com a resta després de dividir el marcador per 7.
